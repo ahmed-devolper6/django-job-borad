@@ -44,9 +44,9 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="index.html">home</a></li>
-                                            <li><a href="jobs.html">Browse Job</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="{% url 'home:home' %}">home</a></li>
+                                            <li><a href="{% url 'JOB:job_list' %}">Browse Job</a></li>
+                                            <li><a href="{% url 'contant:about' %}">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>

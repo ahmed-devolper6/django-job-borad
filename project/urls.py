@@ -19,7 +19,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('jobs/', include('jobs.urls')),
+    path('jobs/', include('jobs.urls', namespace='JOB')),
+    path('home/', include('home.urls', namespace='home')),
+    path('contant/', include('setting.urls', namespace='contant')),
 ]
 urlpatterns +=  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
