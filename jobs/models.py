@@ -8,6 +8,7 @@ JOB_TYPE = [
 ]
 # Create your models here.
 class Jobs(models.Model):
+    user = models.OneToOneField(User, on_delete = models.SET_NULL, null = True)
     title = models.CharField(max_length = 20)
     job_type = models.CharField(max_length = 19 , choices =JOB_TYPE)
     catgory = models.CharField(max_length = 15)
@@ -21,10 +22,10 @@ class Jobs(models.Model):
         return self.title
 
 class Apply(models.Model):
-    user = models.OneToOneField(User, on_delete = models.SET_NULL, null = True)
+    job = models.ForeignKey(Jobs, related_name='apply_job', on_delete=models.CASCADE)
     name = models.CharField(max_length = 20)
     cover_letter = models.TextField(max_length = 50)
     email = models.EmailField()
     job = models.ForeignKey(Jobs,on_delete = models.SET_NULL, null = True)
     def __str__(self) -> str:
-        return f"{str(self.user)} - {str(self.job)}"
+        return f"{self.name} - {str(self.job)}"
